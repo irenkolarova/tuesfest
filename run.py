@@ -16,12 +16,10 @@ GPIO.setup(ECHO_PIN1, GPIO.IN)
 GPIO.setup(ECHO_PIN2, GPIO.IN)
 
 def measure_distance():
-    # send a pulse to the ultrasonic sensor
     GPIO.output(TRIG_PIN, GPIO.HIGH)
     time.sleep(0.00001)
     GPIO.output(TRIG_PIN, GPIO.LOW)
 
-    # measure the time it takes for the echo to return
     start_time = time.time()
     while GPIO.input(ECHO_PIN1) == GPIO.LOW:
         if (time.time() - start_time) > 0.1:
@@ -32,7 +30,6 @@ def measure_distance():
             return -1
     pulse_end = time.time()
 
-    # calculate the distance based on the time it took for the echo to return
     pulse_duration = pulse_end - pulse_start
     distance = pulse_duration * 17150
     distance = round(distance, 2)
@@ -40,12 +37,10 @@ def measure_distance():
     return distance
 
 def measure_distance2():
-    # send a pulse to the ultrasonic sensor
     GPIO.output(TRIG_PIN, GPIO.HIGH)
     time.sleep(0.00001)
     GPIO.output(TRIG_PIN, GPIO.LOW)
 
-    # measure the time it takes for the echo to return
     start_time = time.time()
     while GPIO.input(ECHO_PIN2) == GPIO.LOW:
         if (time.time() - start_time) > 0.1:
@@ -56,7 +51,6 @@ def measure_distance2():
             return -1
     pulse_end2 = time.time()
 
-    # calculate the distance based on the time it took for the echo to return
     pulse_duration2 = pulse_end2 - pulse_start2
     distance2 = pulse_duration2 * 17150
     distance2 = round(distance2, 2)

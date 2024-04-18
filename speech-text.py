@@ -3,20 +3,11 @@ import requests
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
+
 load_dotenv()
 
 def transcribe_audio_whisper(audio_file_path, api_key):
-    """
-    Transcribes an audio file using OpenAI's Whisper API.
 
-    Parameters:
-    - audio_file_path: The path to the audio file to transcribe.
-    - api_key: Your OpenAI API key.
-
-    Returns:
-    - The transcribed text if successful, None otherwise.
-    """
     url = "https://api.openai.com/v1/whisper"
     headers = {
         "Authorization": f"Bearer {api_key}"
@@ -45,7 +36,7 @@ def transcribe_audio_whisper(audio_file_path, api_key):
         print(f"An error occurred while processing the response: {e}")
         return None
 
-# Example usage
+
 def main():
     api_key = os.getenv("API_KEY")
     audio_file_path = '/home/cplisplqs/Desktop/topal/Recording.wav'

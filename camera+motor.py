@@ -9,13 +9,12 @@ tipIds = [4, 8, 12, 16, 20]
 
 cap = cv2.VideoCapture(0)
 
-# Setup GPIO pins for motor control
 GPIO.setmode(GPIO.BCM)
 motor_pins = [23, 24, 25, 16]
 for pin in motor_pins:
     GPIO.setup(pin, GPIO.OUT)
 
-# Function to control motor direction
+
 def set_motor_direction(direction):
     if direction == 'forward':
         GPIO.output(motor_pins[0], GPIO.HIGH)

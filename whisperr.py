@@ -12,10 +12,8 @@ from langid import classify as langid_classify
 from langdetect import detect as langdetect_detect
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
 load_dotenv()
 
-# Initialize the client with your API key
 client = openai.OpenAI(api_key = os.getenv("API_KEY"))
 
 def record_voice(fs=44100, channels=1):
@@ -56,18 +54,14 @@ def transcribe_audio_to_text(audio_path):
         return transcription.text
 
 def detect_language(text):
-    # Use langid to classify language
     lid_language, lid_confidence = langid_classify(text)
-    # Use langdetect to detect language
     try:
         ldt_language = langdetect_detect(text)
     except:
-        ldt_language = 'en'  # Default to English if langdetect fails
-
-    # Simple voting mechanism to decide on language
+        ldt_language = 'en'  # default - english
     if lid_language == ldt_language or lid_confidence > 0.5:
         return lid_language
-    return ldt_language  # Fallback or use langdetect result if confidence is low
+    return ldt_language 
 
 def interact_with_chatgpt(text, language):
     response = client.chat.completions.create(
