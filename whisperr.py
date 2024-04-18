@@ -10,9 +10,13 @@ import subprocess
 import os
 from langid import classify as langid_classify
 from langdetect import detect as langdetect_detect
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Initialize the client with your API key
-client = openai.OpenAI(api_key="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")
+client = openai.OpenAI(api_key = os.getenv("API_KEY"))
 
 def record_voice(fs=44100, channels=1):
     global stop_recording

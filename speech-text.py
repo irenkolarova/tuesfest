@@ -1,6 +1,10 @@
 
 import requests
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 def transcribe_audio_whisper(audio_file_path, api_key):
     """
@@ -43,7 +47,7 @@ def transcribe_audio_whisper(audio_file_path, api_key):
 
 # Example usage
 def main():
-    api_key = os.getenv("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")
+    api_key = os.getenv("API_KEY")
     audio_file_path = '/home/cplisplqs/Desktop/topal/Recording.wav'
     transcription = transcribe_audio_whisper(audio_file_path, api_key)
     if transcription:
