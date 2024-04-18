@@ -9,15 +9,15 @@ WAVE_OUTPUT_FILENAME = "output.wav"
 
 p = pyaudio.PyAudio()
 
-# Print information about available input devices
+
 for index in range(p.get_device_count()):
     device_info = p.get_device_info_by_index(index)
     print(f"Device {index}: {device_info['name']}")
 
-# Select the system default input device
+
 input_device_index = p.get_default_input_device_info()['index']
 
-# Determine the number of channels supported by the input device
+
 input_channels = p.get_device_info_by_index(input_device_index)['maxInputChannels']
 
 stream = p.open(format=FORMAT,

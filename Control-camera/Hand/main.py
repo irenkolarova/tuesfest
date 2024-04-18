@@ -6,15 +6,15 @@ import time
 import RPi.GPIO as GPIO
 GPIO.setwarnings(False)
 
-# MediaPipe setup
+
 mp_draw = mp.solutions.drawing_utils
 mp_hand = mp.solutions.hands
 tipIds = [4, 8, 12, 16, 20]
 
-# Initialize the webcam
+
 cap = cv2.VideoCapture(0)
 
-# GPIO setup
+
 GPIO.setmode(GPIO.BCM)
 motor1A = 17
 motor1B = 27
@@ -25,11 +25,11 @@ motor3B = 25
 motor4A = 5
 motor4B = 6
 
-# Set up all motor pins as output
+
 for pin in [motor1A, motor1B, motor2A, motor2B, motor3A, motor3B, motor4A, motor4B]:
     GPIO.setup(pin, GPIO.OUT)
 
-# Define functions to control the motors
+
 def stop_all():
     for pin in [motor1A, motor1B, motor2A, motor2B, motor3A, motor3B, motor4A, motor4B]:
         GPIO.output(pin, False)
