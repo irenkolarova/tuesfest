@@ -1,5 +1,3 @@
-#!/usr/bin/xpython3
-
 import cv2
 import mediapipe as mp
 import time
